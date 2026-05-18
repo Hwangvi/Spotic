@@ -1,0 +1,131 @@
+.top-tracks-container {
+  padding: 3rem;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #121212;
+  min-height: 100vh;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #404040;
+  margin-bottom: 2.5rem;
+}
+
+.top-tracks-container h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #1db954;
+  font-family: 'SpotifyMix', sans-serif;
+  font-weight: 700;
+}
+
+.tracks-list {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 25px;
+}
+
+.track-card-rectangular {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #181818;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  height: 100%;
+}
+
+.track-card-rectangular:hover {
+  background-color: #282828;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.track-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.track-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 0;
+  gap: 10px;
+}
+
+.track-info h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 0 0 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-info p {
+  font-size: 1rem;
+  color: #b3b3b3;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-preview {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .tracks-list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .top-tracks-container {
+    padding: 1rem;
+  }
+
+  .top-tracks-container h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .tracks-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .track-card-rectangular {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .track-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .track-info h3 {
+    font-size: 1rem;
+  }
+
+  .track-info p {
+    font-size: 0.85rem;
+  }
+}

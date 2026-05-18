@@ -1,0 +1,14 @@
+<div class="search-wrapper">
+  <div class="search-container">
+    <input
+      #searchTxt
+      type="text"
+      (keyup)="search(searchTxt.value)"
+      placeholder="¡Busca a tu artista favorito!"
+      class="search-input"
+    />
+    <button class="search-button">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>

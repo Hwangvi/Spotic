@@ -1,0 +1,52 @@
+<div class="saves-container">
+  <h2>Mis Canciones Guardadas</h2>
+
+  <div *ngIf="favoritesService.favoriteTracks().length > 0; else noFavorites" class="table-container">
+    <table class="tracks-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Imagen</th>
+          <th>Canción</th>
+          <th>Artista</th>
+          <th>Vista Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let track of favoritesService.favoriteTracks()">
+
+          <td data-th="Favorito">
+            <button (click)="confirmRemoveFavorite(track)" class="fav-button">
+              <i class="fa-solid fa-star favorited"></i>
+            </button>
+          </td>
+
+          <td data-th="Imagen">
+             <img [src]="track.albumImage | noImg" width="40" style="border-radius: 4px;">
+          </td>
+
+          <td data-th="Canción">{{ track.name }}</td>
+
+          <td data-th="Artista">
+            {{ track.artistName }}
+          </td>
+
+          <td data-th="Vista Previa">
+            <iframe
+              [src]="'https://open.spotify.com/embed/track/' + track.id | secureDom"
+              width="300"
+              height="80"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noFavorites>
+    <h3>Aún no has añadido ninguna canción a Guardados.</h3>
+  </ng-template>
+</div>

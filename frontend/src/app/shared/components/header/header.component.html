@@ -1,0 +1,44 @@
+<header>
+  <div class="logo">
+    <img src="/icons/spotify.png" alt="Spotic Logo" />
+    <h1>Spotic</h1>
+  </div>
+
+  <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <div class="others" [class.active]="isMenuOpen()">
+
+    <ng-container *ngIf="authService.isAuthenticated(); else loginTemplate">
+      <nav>
+        <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a>
+        <a routerLink="/search" routerLinkActive="active" (click)="closeMenu()">Search</a>
+        <a routerLink="/saves" routerLinkActive="active" (click)="closeMenu()">Saves</a>
+      </nav>
+
+      <div class="user-actions" *ngIf="authService.currentUserProfile() as profile">
+        <a routerLink="/profile" routerLinkActive="active" class="profile-link" (click)="closeMenu()">
+          <img
+            *ngIf="profile.imageUrl"
+            [src]="profile.imageUrl"
+            alt="Foto de perfil"
+            class="profile-avatar"
+          />
+          <span class="profile-name">{{ profile.displayName }}</span>
+        </a>
+
+        <button class="logout-button" (click)="logout()" title="Cerrar sesión">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #loginTemplate>
+      <button class="login-btn" (click)="login()">Iniciar Sesión</button>
+    </ng-template>
+
+  </div>
+</header>

@@ -1,0 +1,133 @@
+
+h2{
+  text-align: center;
+  font-size: 5vh;
+  color: #1db954;
+  font-family: "SpotifyMix", sans-serif;
+  transition: font-size 0.3s ease;
+  margin-top: 10%;
+  margin-bottom: 2%;
+}
+h3{
+  text-align: center;
+  font-size: 3vh;
+  color: #1db954;
+  font-family: "SpotifyMix", sans-serif;
+  transition: font-size 0.3s ease;
+  margin-top: 20%;
+}
+.saves-container {
+  padding: 20px;
+  background-color:  rgb(29, 29, 29);
+  min-height: 100vh;
+}
+
+.table-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #1db954;
+  border: 3px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tracks-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+
+.tracks-table thead th {
+  background-color: #bebebe;
+  text-align: center;
+  padding: 12px;
+  font-size: 2.5vh;
+  font-style: oblique;
+  font-family: 'SpotifyMix', sans-serif;
+}
+
+
+.tracks-table tbody tr td {
+  font-family: 'SpotifyMix', sans-serif;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #4a4a4a;
+  font-size: 2vh;
+}
+
+
+.tracks-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+.tracks-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.tracks-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.fav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.fav-button .fa-star.favorited {
+  color: #ffc107;
+}
+
+a {
+  text-decoration: none !important;
+  color: #4a4a4a;
+  display: inline-block;
+}
+
+@media (max-width: 492px) {
+  h2{
+    margin-top: 100px;
+  }
+  .table-container {
+    border: none;
+    background-color: transparent;
+  }
+
+  .tracks-table thead {
+    display: none;
+  }
+
+  .tracks-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #4a4a4a;
+    padding: 0.5rem;
+    background-color: #ffffff;
+  }
+
+  .tracks-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .tracks-table tr td:last-child {
+      border-bottom: none;
+  }
+
+  .tracks-table td::before {
+    content: attr(data-th);
+    font-weight: bold;
+    text-align: left;
+    margin-right: 1rem;
+    color: #111;
+  }
+}

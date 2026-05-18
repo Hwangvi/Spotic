@@ -1,0 +1,60 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading && artist" class="artist-page-container">
+
+  <div class="artist-header">
+    <img [src]="artist.imageUrl | noImg" class="artist-image" alt="Foto de {{ artist.name }}" />
+    <h1 class="artist-name">{{ artist.name }}</h1>
+
+    <a [href]="artist.spotifyUrl" target="_blank" class="spotify-link">
+      Ver en Spotify
+    </a>
+  </div>
+
+  <div class="tracks-container">
+    <h2>Canciones populares</h2>
+    <div class="table-container">
+      <table class="tracks-table">
+        <thead>
+          <tr>
+            <th>Fav</th>
+            <th>Imagen</th>
+            <th>Canción</th>
+            <th>Artista</th>
+            <th>Vista Previa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let track of topTracks">
+
+            <td>
+              <button (click)="toggleFavorite(track)" class="fav-button">
+                <i class="fa-solid fa-star" [class.favorited]="favoritesService.isFavorite(track.id)"></i>
+              </button>
+            </td>
+
+            <td>
+                <img [src]="track.albumImage | noImg" width="40" style="border-radius:4px;">
+            </td>
+
+            <td>{{ track.name }}</td>
+
+            <td class="artist-text">{{ track.artistName }}</td>
+
+            <td>
+              <iframe
+                [src]="'https://open.spotify.com/embed/track/' + track.id | secureDom"
+                width="300"
+                height="80"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              >
+              </iframe>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
