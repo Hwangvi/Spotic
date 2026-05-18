@@ -1,0 +1,190 @@
+.artist-page-container {
+  padding: 2rem;
+  background-color: rgb(68, 68, 68);
+}
+
+.artist-header {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.artist-image {
+  margin-top: 50px;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.artist-name {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #1db954;
+  font-family: 'SpotifyMix', sans-serif;
+}
+
+.spotify-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 3px solid #1db954;
+  background-color: #1db954;
+  border-radius: 500px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.spotify-link:hover {
+  background-color: #1db954;
+  color: rgb(255, 255, 255);
+}
+
+.tracks-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #1db954;
+  border: 3px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tracks-container h2 {
+  margin-top: 2vh;
+  font-family: 'SpotifyMix', sans-serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 3.5vh;
+}
+
+.tracks-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+.tracks-table thead th {
+  background-color: #bebebe;
+  text-align: center;
+  padding: 12px;
+  font-size: 2.5vh;
+  font-style: oblique;
+}
+
+.tracks-table tbody tr td {
+  font-family: 'SpotifyMix', sans-serif;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #4a4a4a;
+  font-size: 2vh;
+}
+
+.tracks-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tracks-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.tracks-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+.fav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.fav-button .fa-star.favorited {
+  color: #ffc107;
+}
+
+a {
+  text-decoration: none !important;
+  color: #4a4a4a;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  }
+
+@media (max-width: 492px) {
+  .artist-page-container {
+    padding: 1rem;
+  }
+
+  .artist-header {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .artist-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .artist-name {
+    font-size: 2rem;
+  }
+
+  .tracks-container h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+
+  .tracks-table thead {
+    display: none;
+  }
+
+
+  .tracks-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #4a4a4a;
+    padding: 0.5rem;
+  }
+
+  .tracks-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+  }
+
+
+  .tracks-table tr td:last-child {
+      border-bottom: none;
+  }
+
+  .tracks-table td::before {
+    content: attr(data-th);
+    font-weight: bold;
+    text-align: left;
+    margin-right: 1rem;
+  }
+
+  .tracks-table td:nth-of-type(1)::before { content: 'Canción:'; }
+  .tracks-table td:nth-of-type(2)::before { content: 'Álbum:'; }
+  .tracks-table td:nth-of-type(3)::before { content: 'Artista:'; }
+  .tracks-table td:nth-of-type(4)::before {content: 'Popularidad';}
+  .tracks-table td:nth-of-type(5)::before {content: 'Vista previa';}
+
+
+
+}
+

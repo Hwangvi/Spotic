@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>New Releases</h1>
+
+  <div class="carousel-wrapper">
+    <button class="nav prev" (click)="scrollCarousel(-1)">&#10094;</button>
+
+    <div class="carousel" #carousel>
+      <div class="song-card" *ngFor="let song of newSongs()">
+
+        <a (click)="seeArtists(song)" class="pointer">
+          <figure>
+            <img [src]="song.imageUrl | noImg" [alt]="song.name" class="image" />
+          </figure>
+        </a>
+
+        <div class="cardBody">
+          <h2 class="cardTittle">{{ song.name }}</h2>
+          <div class="cardAction">
+            <div class="badge">{{ song.artistName }}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="nav next" (click)="scrollCarousel(1)">&#10095;</button>
+  </div>
+</div>

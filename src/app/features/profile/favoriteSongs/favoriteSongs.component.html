@@ -1,0 +1,40 @@
+<div class="top-tracks-container">
+  <h2>Mis Canciones Más Escuchadas</h2>
+  <hr class="divider" />
+
+  <div *ngIf="topTracks$ | async as tracks; else loading">
+    <div class="tracks-list">
+      <div *ngFor="let track of tracks" class="track-card-rectangular">
+
+        <img
+          [src]="track.albumImage"
+          alt="Canción {{ track.name }}"
+          class="track-image"
+        />
+
+        <div class="track-content">
+          <div class="track-info">
+            <h3>{{ track.name }}</h3>
+            <p>{{ track.artistName }}</p>
+          </div>
+
+          <div class="track-preview">
+            <iframe
+              [src]="'https://open.spotify.com/embed/track/' + track.id | secureDom"
+              width="100%"
+              height="80"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

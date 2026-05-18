@@ -1,0 +1,9 @@
+<div *ngIf="artists.length > 0" class="artists-container">
+  <div *ngFor="let artist of artists" class="artist-card pointer" (click)="viewArtist(artist.id)">
+    <img [src]="artist.imageUrl | noImg" alt="{{ artist.name }}" class="artist-image" />
+
+    <div class="artist-info">
+      <h5 class="artist-name">{{ artist.name }}</h5>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="playlists-container">
+    <h2>Mis Playlists</h2>
+    <hr class="divider" />
+
+    <div *ngIf="playlists$ | async as playlists; else loading">
+      <div *ngIf="playlists.length > 0; else noPlaylists" class="playlists-grid">
+        <div *ngFor="let playlist of playlists" class="playlist-card">
+
+          <img
+            [src]="playlist.imageUrl | noImg"
+            class="playlist-card-image"
+            [alt]="playlist.name"
+          />
+
+          <div class="playlist-card-body">
+            <h5 class="playlist-card-title">{{ playlist.name }}</h5>
+
+            <p class="playlist-card-owner">By: {{ playlist.ownerName }}</p>
+
+            <a [href]="playlist.spotifyUrl" target="_blank" class="playlist-card-button">
+              Escuchar en Spotify
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+
+    <ng-template #noPlaylists>
+      <div class="no-playlists-message">Parece que aún no tienes ninguna playlist pública.</div>
+    </ng-template>
+  </div>
+</div>

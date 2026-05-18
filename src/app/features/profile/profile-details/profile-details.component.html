@@ -1,0 +1,42 @@
+<div *ngIf="profile as user; else loading" class="info-container">
+  <div>
+    <h1 class="tittle">
+      Información de usuario: <span class="highlight">{{ user.displayName }}</span>
+    </h1>
+  </div>
+
+  <div class="wrapped">
+    <div class="profile-header">
+
+      <img
+        *ngIf="user.imageUrl"
+        [src]="user.imageUrl"
+        alt="Foto de perfil de {{ user.displayName }}"
+        class="profile-image"
+      />
+
+      <div>
+        <h1>{{ user.displayName }}</h1>
+        <p>
+          <a [href]="user.spotifyUrl" target="_blank" rel="noopener">
+            Ver en Spotify
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="profile-info">
+      <p><strong>País:</strong> {{ user.country }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+
+      <p><strong>Seguidores:</strong> {{ user.totalFollowers }}</p>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <app-loading></app-loading>
+    <p>Cargando...</p>
+  </div>
+</ng-template>

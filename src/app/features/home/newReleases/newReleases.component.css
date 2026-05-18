@@ -1,0 +1,158 @@
+.container {
+  text-align: center;
+  width: 100%;
+  height: 600px;
+  z-index: -100;
+  background-color: rgb(0, 0, 0);
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-top: 2rem;
+  z-index: 100;
+  color: white;
+  font-size: 2.5rem;
+  font-family: 'SpotifyMix', sans-serif;
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 3%;
+}
+
+.cardTittle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'SpotifyMix', sans-serif;
+  text-transform: uppercase;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 1rem;
+}
+.next {
+  right: 1rem;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+
+.song-card {
+  margin-left: 1.5rem;
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  padding: 8px;
+}
+.song-card:first-child {
+  margin-left: 1.5rem;
+}
+
+.song-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.cardAction {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 60px;
+  overflow: hidden;
+  justify-content: center;
+}
+.badge {
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  font-family: 'SpotifyMix', sans-serif;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+@media (max-width: 492px) {
+  .container {
+    height: auto;
+    padding: 1.5rem 0;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+
+  .nav {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .prev { left: 5px; }
+  .next { right: 5px; }
+
+  .carousel {
+    padding-left: 1rem;
+  }
+
+  .song-card {
+    width: 220px;
+    margin-left: 1rem;
+  }
+  .song-card:first-child {
+    margin-left: 0;
+  }
+
+  .cardTittle {
+    font-size: 1rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
