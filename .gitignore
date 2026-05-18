@@ -1,0 +1,14 @@
+.DS_Store
+.env
+
+backend/target/
+backend/.settings/
+backend/.classpath
+backend/.project
+backend/bin/
+backend/.gradle/
+
+frontend/dist/
+frontend/node_modules/
+frontend/.angular/
+frontend/.idea/
