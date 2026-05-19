@@ -5,34 +5,32 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UserProfile } from '../../shared/models/userProfile';
 import { SpoticService } from './spotic.service';
-
-const URL_BACKEND_AUTH = 'https://127.0.0.1:8443/api/auth';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-
   private http = inject(HttpClient);
   private spoticService = inject(SpoticService);
   private router = inject(Router);
 
+  private readonly URL_BACKEND_AUTH = `${environment.apiUrl}/api/auth`;
+
   public currentUserProfile = signal<UserProfile | null>(null);
+
   public isAuthenticated = signal<boolean>(false);
 
   login(): void {
-    window.location.href = `${URL_BACKEND_AUTH}/login`;
+    window.location.href = `${this.URL_BACKEND_AUTH}/login`;
   }
 
   logout(): Observable<any> {
-
-      return this.http.post(`${URL_BACKEND_AUTH}/logout`, {}, { withCredentials: true }).pipe(
+    return this.http.post(`${this.URL_BACKEND_AUTH}/logout`, {}).pipe(
       tap(() => {
         this.isAuthenticated.set(false);
         this.currentUserProfile.set(null);
-
-        localStorage.clear();
-
+        localStorage.removeItem('spotify_token');
         this.router.navigate(['/']);
       })
     );
@@ -41,6 +39,18 @@ export class AuthService {
   checkAuthStatus(): Observable<boolean> {
     if (this.currentUserProfile()) {
       return of(true);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get('token');
+
+    if (tokenFromUrl) {
+      localStorage.setItem('spotify_token', tokenFromUrl);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    if (!localStorage.getItem('spotify_token')) {
+      return of(false);
     }
 
     return this.spoticService.getCurrentUserProfile().pipe(
@@ -52,6 +62,7 @@ export class AuthService {
       catchError(() => {
         this.isAuthenticated.set(false);
         this.currentUserProfile.set(null);
+        localStorage.removeItem('spotify_token');
         return of(false);
       })
     );

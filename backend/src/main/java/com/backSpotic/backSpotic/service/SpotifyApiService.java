@@ -11,7 +11,6 @@ import org.springframework.core.ParameterizedTypeReference;
 public class SpotifyApiService {
 
     private final String SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1";
-    //private final RestTemplate restTemplate =  new RestTemplate();
     private final RestTemplate restTemplate;
 
 

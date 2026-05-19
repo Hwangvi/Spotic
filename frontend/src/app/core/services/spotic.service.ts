@@ -8,45 +8,45 @@ import { Track } from '../../shared/models/track';
 import { AlbumItem } from '../../shared/models/newReleases';
 import { UserProfile } from './../../shared/models/userProfile';
 import { Playlists } from '../../shared/models/playlists';
+import { environment } from '../../../environments/environment';
 
-
-const URL_BACKEND = 'https://127.0.0.1:8443/api/spotify';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpoticService {
   private http = inject(HttpClient);
+  private readonly URL_BACKEND = `${environment.apiUrl}/api/spotify`;
 
   getNewReleases(): Observable<AlbumItem[]> {
-    return this.http.get<AlbumItem[]>(`${URL_BACKEND}/new-releases`);
+    return this.http.get<AlbumItem[]>(`${this.URL_BACKEND}/new-releases`);
   }
 
 
   getArtist(id: string): Observable<Artist> {
-    return this.http.get<Artist>(`${URL_BACKEND}/artists/${id}`);
+    return this.http.get<Artist>(`${this.URL_BACKEND}/artists/${id}`);
   }
 
 
   getArtists(term: string): Observable<Artist[]> {
-    return this.http.get<Artist[]>(`${URL_BACKEND}/search?term=${term}`);
+    return this.http.get<Artist[]>(`${this.URL_BACKEND}/search?term=${term}`);
   }
 
   getTopTracks(id: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${URL_BACKEND}/artists/${id}/top-tracks`);
+    return this.http.get<Track[]>(`${this.URL_BACKEND}/artists/${id}/top-tracks`);
   }
 
   getCurrentUserProfile(): Observable<UserProfile> {
-    return this.http.get<UserProfile>(`${URL_BACKEND}/me`);
+    return this.http.get<UserProfile>(`${this.URL_BACKEND}/me`);
   }
 
 
   getUserPlaylists(): Observable<Playlists[]> {
-    return this.http.get<Playlists[]>(`${URL_BACKEND}/me/playlists`);
+    return this.http.get<Playlists[]>(`${this.URL_BACKEND}/me/playlists`);
   }
 
 
   getUserTopTracks(): Observable<Track[]> {
-    return this.http.get<Track[]>(`${URL_BACKEND}/me/top/tracks`);
+    return this.http.get<Track[]>(`${this.URL_BACKEND}/me/top/tracks`);
   }
 }
