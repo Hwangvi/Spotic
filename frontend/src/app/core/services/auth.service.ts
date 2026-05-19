@@ -32,7 +32,7 @@ export class AuthService {
         this.currentUserProfile.set(null);
         localStorage.removeItem('spotify_token');
         this.router.navigate(['/']);
-      })
+      }),
     );
   }
 
@@ -42,10 +42,15 @@ export class AuthService {
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const tokenFromUrl = urlParams.get('token');
+    let tokenFromUrl = urlParams.get('token');
 
+    if (!tokenFromUrl && window.location.hash) {
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      tokenFromUrl = hashParams.get('token');
+    }
     if (tokenFromUrl) {
       localStorage.setItem('spotify_token', tokenFromUrl);
+
       window.history.replaceState({}, document.title, window.location.pathname);
     }
 
@@ -54,7 +59,7 @@ export class AuthService {
     }
 
     return this.spoticService.getCurrentUserProfile().pipe(
-      tap(profile => {
+      tap((profile) => {
         this.currentUserProfile.set(profile);
         this.isAuthenticated.set(true);
       }),
@@ -64,7 +69,7 @@ export class AuthService {
         this.currentUserProfile.set(null);
         localStorage.removeItem('spotify_token');
         return of(false);
-      })
+      }),
     );
   }
 }

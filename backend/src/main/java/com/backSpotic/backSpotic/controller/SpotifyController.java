@@ -71,9 +71,13 @@ public class SpotifyController {
     }
 
     private String extractToken(String authHeader) {
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            return authHeader.substring(7);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No está autenticado con Spotify.");
         }
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No está autenticado con Spotify.");
+        String token = authHeader.substring(7).trim();
+        if (token.startsWith("\"") && token.endsWith("\"")) {
+            token = token.substring(1, token.length() - 1);
+        }
+        return token;
     }
 }

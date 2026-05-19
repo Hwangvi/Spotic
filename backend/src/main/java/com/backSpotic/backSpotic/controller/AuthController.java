@@ -31,7 +31,7 @@ public class AuthController {
     public void callback(@RequestParam("code") String code, HttpServletResponse response) throws IOException {
         TokenResponseDto tokenDto = spotifyAuthService.exchangeCodeForToken(code);
         if (tokenDto != null) {
-            response.sendRedirect(frontendUrl + "/home?token=" + tokenDto.getAccessToken());
+            response.sendRedirect(frontendUrl + "/home#token=" + tokenDto.getAccessToken());
         } else {
             response.sendRedirect(frontendUrl + "/login-error");
         }
