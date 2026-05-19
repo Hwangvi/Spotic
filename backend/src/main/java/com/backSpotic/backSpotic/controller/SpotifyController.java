@@ -50,10 +50,10 @@ public class SpotifyController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<FrontendUserDto> getCurrentUserProfile(@RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<UserProfileDto> getCurrentUserProfile(@RequestHeader("Authorization") String authHeader) {
         String accessToken = extractToken(authHeader);
-        UserProfileDto rawUser = spotifyApiService.getCurrentUserProfile(accessToken);
-        return ResponseEntity.ok(spotifyMapper.toFrontendUser(rawUser));
+        UserProfileDto profile = spotifyApiService.getCurrentUserProfile(accessToken);
+        return ResponseEntity.ok(profile);
     }
 
     @GetMapping("/me/playlists")
