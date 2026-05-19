@@ -15,6 +15,8 @@ import { environment } from '../environments/environment';
 export class App implements OnInit {
   protected readonly title = signal('Spotic');
 
+  protected readonly showBanner = signal(true);
+
   private authService = inject(AuthService);
   private http = inject(HttpClient);
 
@@ -32,5 +34,9 @@ export class App implements OnInit {
           console.error('Error al contactar con el backend:', err);
         }
       });
+  }
+
+  protected closeBanner(): void {
+    this.showBanner.set(false);
   }
 }

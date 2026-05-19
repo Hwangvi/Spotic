@@ -1,5 +1,31 @@
 <app-header></app-header>
+
 <main>
+  @if (showBanner()) {
+    <div class="demo-alert-banner" role="alert">
+      <button (click)="closeBanner()" class="btn-close-demo" aria-label="Cerrar aviso">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="demo-alert-content">
+        <div class="demo-alert-text">
+          <h5>
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Entorno de Demostración Activo por Restricción de Cuota de Spotify
+          </h5>
+          <p>
+            La API de Desarrollo de Spotify restringe el acceso <strong>exclusivamente</strong> a correos autorizados en su panel de control (Error 403 Forbidden), limitando además las funciones de reproducción en tiempo real a cuentas Premium de la plataforma. Para garantizar que puedas evaluar este portfolio sin bloqueos, el Backend (Spring Boot) ha activado un <strong>Modo de Contingencia</strong> inyectando datos simulados perfectamente estructurados.
+          </p>
+        </div>
+        <div class="demo-alert-trace">
+          <h6><i class="bi bi-terminal"></i> Traza del Error interceptada en el Servidor:</h6>
+          <pre><code>org.springframework.web.client.HttpClientErrorException$Forbidden: 403 Forbidden on GET request for "https://api.spotify.com/v1/me": "Check settings on https://developer.spotify.com/dashboard, the user may not be registered."</code></pre>
+        </div>
+      </div>
+    </div>
+  }
+
   <router-outlet></router-outlet>
 </main>
+
 <app-footer></app-footer>
