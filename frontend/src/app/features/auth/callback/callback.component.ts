@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-callback',
@@ -21,7 +22,7 @@ export class CallbackComponent implements OnInit {
         const code = params.get('code');
         if (!code) throw new Error('No hay código');
 
-        const backendCallbackUrl = `https://127.0.0.1:8443/api/auth/callback`;
+        const backendCallbackUrl = `${environment.apiUrl}/api/auth/callback`;
         return this.http.get(`${backendCallbackUrl}?code=${code}`, { withCredentials: true });
       })
     ).subscribe({

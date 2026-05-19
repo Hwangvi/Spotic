@@ -4,6 +4,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AuthService } from './core/services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class App implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const backendUrl = 'https://127.0.0.1:8443/registrar-visita';
+    const backendUrl = `${environment.apiUrl}/registrar-visita`;
 
     this.http.get(backendUrl, { responseType: 'text' })
       .subscribe({
