@@ -9,7 +9,7 @@ Una aplicación Full Stack robusta que replica la experiencia de usuario y el co
 
 ## 🛡️ Arquitectura Resiliente: Mecanismo de Tolerancia a Fallos (Modo Demo)
 
-> **NOTA DE EVALUACIÓN PARA RECLUTADORES:** 
+> **NOTA DE EVALUACIÓN PARA TESTERS:** 
 > Las aplicaciones en modo desarrollo de la API de Spotify restringen por política interna el acceso mediante código `403 Forbidden` a todo usuario cuyo correo electrónico no esté registrado explícitamente en el Dashboard del Desarrollador del propietario del proyecto.
 > 
 > **¿Cómo soluciona este proyecto dicha limitación?**
